@@ -28,7 +28,13 @@ def optimize_circuit(params):
     optimal_value = 0.0
 
     # QHACK #
-
+@qml.qnode(dev)
+def my_quantum_function(param):
+qml.RX(param, wires=0) # a single-wire parameterized gate
+# Finally we return a measurement of an operator on a wire
+return qml.expval(qml.RX(0))
+qml.probs(wire=0) 
+result = my_quantum_function(0.1)
     # Initialize the device
     # dev = ...
 
